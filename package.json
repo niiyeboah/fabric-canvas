@@ -1,19 +1,18 @@
 {
-  "name": "@vaadin-component-factory/--elementname--",
+  "name": "fabric-canvas",
   "version": "0.1.2",
-  "description": "--elementdescription--",
-  "main": "theme/lumo/--elementname--.js",
-  "author": "Vaadin Ltd",
-  "license": "https://raw.githubusercontent.com/vaadin/vaadin-incubator-element/master/LICENSE",
+  "description": "Web Component wrapper of fabric.js",
+  "main": "src/fabric-canvas.js",
+  "author": "Nii Yeboah",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vaadin-component-factory/--elementname--.git"
+    "url": "git+https://github.com/niiyeboah/fabric-canvas.git"
   },
   "keywords": [
-    "Vaadin",
-    "vaadin-incubator-element",
-    "vaadin-component-factory",
-    "--elementname--",
+    "canvas",
+    "fabric.js",
+    "fabric-canvas",
     "web-components",
     "web-component",
     "polymer"
@@ -26,7 +25,6 @@
     "build:prod": "run-s build:api build:demo",
     "build:api": "npm run prestart && polymer build",
     "build:demo": "webpack",
-    "postinstall": "node init.js",
     "publish": "node publish.js"
   },
   "husky": {
@@ -43,7 +41,6 @@
   },
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@vaadin/vaadin-element-mixin": "^2.1.3",
     "@vaadin/vaadin-lumo-styles": "^1.5.0",
     "@vaadin/vaadin-themable-mixin": "^1.4.4"
   },
@@ -93,9 +90,9 @@
     "webpack-merge": "^4.2.1"
   },
   "bugs": {
-    "url": "https://github.com/vaadin-component-factory/--elementname--/issues"
+    "url": "https://github.com/niiyeboah/fabric-canvas/issues"
   },
-  "homepage": "https://github.com/vaadin-component-factory/--elementname--#readme",
+  "homepage": "https://github.com/niiyeboah/fabric-canvas#readme",
   "directories": {
     "test": "test"
   }
