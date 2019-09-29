@@ -1,12 +1,14 @@
 # &lt;fabric-canvas&gt;
 
-<!-- [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vaadin/web-components?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+<!--
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vaadin/web-components?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![npm version](https://badgen.net/npm/v/@vaadin-component-factory/fabric-canvas)](https://www.npmjs.com/package/@vaadin-component-factory/fabric-canvas)
 [![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/vaadin-component-factoryfabric-canvas)
 
 [Live demo ↗](https://fabric-canvas.netlify.com)
 |
-[API documentation ↗](https://fabric-canvas.netlify.com/api/#/elements/FabricWc) -->
+[API documentation ↗](https://fabric-canvas.netlify.com/api/#/elements/FabricCanvas)
+-->
 
 ## Installation
 

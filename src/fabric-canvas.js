@@ -1,5 +1,4 @@
 import { html, PolymerElement } from '@polymer/polymer/polymer-element';
-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin';
 
 /**
  * `<fabric-canvas>` Web Component wrapper of fabric.js
@@ -30,7 +29,7 @@ import { ThemableMixin } from '@vaadin/vaadin-themable-mixin';
  *
  * @demo demo/index.html
  */
-class FabricWc extends ThemableMixin(PolymerElement) {
+class FabricCanvas extends PolymerElement {
   static get template() {
     return html`
       <style>
@@ -45,9 +44,13 @@ class FabricWc extends ThemableMixin(PolymerElement) {
     return 'fabric-canvas';
   }
 
+  static get version() {
+    return '0.1.0';
+  }
+
   static get properties() {
     return {};
   }
 }
 
-customElements.define(FabricWc.is, FabricWc);
+customElements.define(FabricCanvas.is, FabricCanvas);

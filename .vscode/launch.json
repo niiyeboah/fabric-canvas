@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug fabric-esm-transfrom.js",
+      "program": "${workspaceFolder}\\util\\fabric-esm-transfrom.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug publish.js",
+      "program": "${workspaceFolder}\\util\\publish.js",
+      "args": ["0.2.0"]
+    }
+  ]
+}
