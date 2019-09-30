@@ -8,6 +8,7 @@ let fabricString = readFileSync(fabricPath, 'utf8');
   /\(function\(global\)/g,
   /\}\)\(typeof.*this/g,
   /if \(typeof.*?exports.fabric.*?}/s,
+  /window.fabric = fabric;/s,
   /global \|\|/,
   /fabric.*?= global\.fabric.*?,\n?/g,
   /var fabric = global\.fabric.*;/g,
