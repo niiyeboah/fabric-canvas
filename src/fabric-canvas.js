@@ -50,7 +50,7 @@ class FabricCanvas extends mixinBehaviors([IronResizableBehavior], PolymerElemen
   }
 
   static get version() {
-    return '0.1.0';
+    return '0.1.1';
   }
 
   /**
