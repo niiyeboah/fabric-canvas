@@ -41,6 +41,7 @@
     ]
   },
   "dependencies": {
+    "@polymer/iron-resizable-behavior": "^3.0.1",
     "@polymer/polymer": "^3.0.0",
     "@vaadin/vaadin-lumo-styles": "^1.5.0",
     "@vaadin/vaadin-themable-mixin": "^1.4.4",
