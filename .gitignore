@@ -1,6 +1,5 @@
 /node_modules/
 /dist/
 /build/
-fabric.esm.js
 package-lock.json
 analysis.json
