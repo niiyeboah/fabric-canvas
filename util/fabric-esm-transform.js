@@ -7,10 +7,10 @@ let fabricString = readFileSync(fabricPath, 'utf8');
   /if \(typeof exports.*(if \(document.*?window;).*DOMParser;\n}/s,
   /\(function\(global\)/g,
   /\}\)\(typeof.*this/g,
-  /if \(typeof.*?fabric;.*?}/s,
+  /if \(typeof.*?exports.fabric.*?}/s,
   /global \|\|/,
   /fabric.*?= global\.fabric.*?,\n?/g,
-  /fabric = global\.fabric.*;/g,
+  /var fabric = global\.fabric.*;/g,
   /if \(!global.fabric\) {.*?return;.*?}/s
 ].forEach((regex, i) => {
   switch (i) {
