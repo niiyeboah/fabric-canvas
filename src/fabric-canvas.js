@@ -75,6 +75,7 @@ class FabricCanvas extends mixinBehaviors([IronResizableBehavior], PolymerElemen
   ready() {
     super.ready();
     const options = {};
+    this.fabric = fabric;
     Array.from(this.attributes)
       .filter(attr => !!attr.name.match(/^opt-.*/))
       .map(attr => {

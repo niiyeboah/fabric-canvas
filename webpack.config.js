@@ -106,13 +106,7 @@ const productionConfig = merge([
     plugins: [
       new CopyWebpackPlugin([...polyfills]),
       new HtmlWebpackPlugin({
-        template: INDEX_TEMPLATE,
-        minify: {
-          collapseWhitespace: true,
-          removeComments: true,
-          minifyCSS: true,
-          minifyJS: true
-        }
+        template: INDEX_TEMPLATE
       }),
       new HtmlReplaceWebpackPlugin([
         {
