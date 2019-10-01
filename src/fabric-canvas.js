@@ -1,6 +1,6 @@
 import { html, PolymerElement } from '@polymer/polymer/polymer-element';
 import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
-import { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior.js';
+import { IronResizableBehavior } from '@polymer/iron-resizable-behavior';
 import fabric from './lib/fabric.esm';
 
 /**
@@ -9,26 +9,6 @@ import fabric from './lib/fabric.esm';
  * ```html
  * <fabric-canvas></fabric-canvas>
  * ```
- *
- * ### Styling
- *
- * The following custom properties are available for styling:
- *
- * Custom property | Description | Default
- * ----------------|-------------|-------------
- * `--fabric-canvas-property` | Example custom property | `unset`
- *
- * The following shadow DOM parts are available for styling:
- *
- * Part name | Description
- * ----------------|----------------
- * `part` | Example part
- *
- * The following state attributes are available for styling:
- *
- * Attribute    | Description | Part name
- * -------------|-------------|------------
- * `attribute` | Example styling attribute | :host
  *
  * @demo demo/index.html
  */
@@ -121,8 +101,8 @@ class FabricCanvas extends mixinBehaviors([IronResizableBehavior], PolymerElemen
         const shapeClass = shape[0].toUpperCase() + shape.substring(1);
         if (fabric[shapeClass]) {
           const options = {};
-          Array.from(node.attributes).map(attr => {
-            options[attr.name] = isNaN(attr.value) ? attr.value : Number(attr.value);
+          Array.from(node.attributes).forEach(attr => {
+            options[attr.name] = this._parseAttrValue(attr.value);
           });
           let shapeObj;
           if (shape === 'path' && options.path) {

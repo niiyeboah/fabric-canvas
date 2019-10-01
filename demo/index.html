@@ -26,16 +26,22 @@
   </head>
   <body>
     <main class="vertical-section-container centered hidden">
-      <h3><a href="api/#/elements/FabricCanvas">API documentation ↗</a></h3>
+      <h3>
+        <a href="api/#/elements/FabricCanvas">API documentation ↗</a>
+        &nbsp;|&nbsp;
+        <a href="https://stackblitz.com/edit/fabric-canvas?file=index.html">Live code ↗</a>
+      </h3>
+
       <h3>Basic Shapes</h3>
       <demo-snippet>
         <template>
           <fabric-canvas>
             <fabric-rect top="100" left="100" width="50" height="50" fill="red"></fabric-rect>
-            <fabric-circle top="100" left="300" radius="50" fill="blue"></fabric-circle>
+            <fabric-ellipse top="100" left="300" rx="100" ry="100" fill="blue"></fabric-ellipse>
           </fabric-canvas>
         </template>
       </demo-snippet>
+
       <h3>Paths</h3>
       <demo-snippet>
         <template>
