@@ -1,3 +1,4 @@
+/* Transform fabric.js (3.4.0) to ES module */
 const path = require('path');
 const { readFileSync, writeFileSync } = require('fs');
 const fabricPath = path.resolve(__dirname, '../node_modules/fabric/dist/', 'fabric.js');

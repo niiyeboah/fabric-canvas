@@ -132,3 +132,5 @@ class FabricCanvas extends mixinBehaviors([IronResizableBehavior], PolymerElemen
 }
 
 customElements.define(FabricCanvas.is, FabricCanvas);
+
+export { fabric };
