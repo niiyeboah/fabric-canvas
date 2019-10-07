@@ -89,6 +89,7 @@ const commonConfig = merge([
 
 const productionConfig = merge([
   {
+    mode: 'production',
     devtool: 'nosources-source-map',
     optimization: {
       minimizer: [
@@ -127,6 +128,6 @@ const productionConfig = merge([
   }
 ]);
 
-module.exports = mode => {
-  return merge(commonConfig, productionConfig, { mode });
+module.exports = () => {
+  return merge(commonConfig, productionConfig);
 };
