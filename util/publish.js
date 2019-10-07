@@ -15,7 +15,7 @@ if (!version.match(semverRegex)) {
   process.exit();
 }
 
-const srcPath = path.resolve(__dirname, '../src/', 'fabric-canvas.js');
+const srcPath = path.resolve(__dirname, '../src/', 'fabric-canvas-mixin.js');
 let srcString = readFileSync(srcPath, 'utf8');
 const replaceRegex = /get version.*?'(\d.\d.\d)';/s;
 const matches = replaceRegex.exec(srcString);
