@@ -6,9 +6,18 @@
 [![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/vaadin-component-factoryfabric-canvas)
 -->
 
+`<fabric-canvas>` is a Web Component wrapper for the popular javascript library [fabric.js](https://github.com/fabricjs/fabric.js).
+
+- [x] Declarative API
+- [x] Responsive canvas size
+- [x] fabric.js ES module
+
 [Live demo ↗](https://fabric-canvas.netlify.com)
 |
 [API documentation ↗](https://fabric-canvas.netlify.com/api/#/elements/FabricCanvas)
+
+![screenshot](https://user-images.githubusercontent.com/3392815/66313780-9bdf4400-e91b-11e9-96c8-096cd17d6b7a.png)
+![carbon](https://user-images.githubusercontent.com/3392815/66313774-98e45380-e91b-11e9-9659-605f432179fc.png)
 
 ## Installation
 
@@ -20,17 +29,53 @@ npm i fabric-canvas --save
 
 ## Usage
 
-Once installed, import it in your application:
+Import the web component in your application:
 
 ```js
 import 'fabric-canvas';
 ```
 
-Add `<fabric-canvas>` element to the page.
+Or import the static version:
+
+```js
+import 'fabric-canvas/src/fabric-static-canvas';
+```
+
+Add the `<fabric-canvas>` element to the page.
 
 ```html
 <fabric-canvas></fabric-canvas>
 ```
+
+## Adding Shapes
+
+### `HTML` API
+
+```html
+<fabric-canvas>
+  <fabric-rect top="100" left="100" width="200" height="200" fill="red"></fabric-rect>
+</fabric-canvas>
+```
+
+### `JS` API
+
+```js
+import { fabric } from 'fabric-canvas';
+
+const fc = document.querySelector('fabric-canvas');
+
+const rect = new fabric.Rect({
+  top: 100,
+  left: 100,
+  width: 200,
+  height: 200,
+  fill: 'red'
+});
+
+fc.canvas.add(rect);
+```
+
+> **Note:** In order to use the [fabric.js API](http://fabricjs.com/docs/fabric.Canvas.html#add) to add shapes, you must import the `fabric` module along with the web component.
 
 ## Running demo
 
