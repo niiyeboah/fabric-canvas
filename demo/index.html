@@ -18,6 +18,10 @@
         main.hidden {
           opacity: 0;
         }
+        fabric-canvas,
+        fabric-static-canvas {
+          height: 400px;
+        }
       </style>
     </custom-style>
     <script>
@@ -32,17 +36,44 @@
         <a href="https://stackblitz.com/edit/fabric-canvas?file=index.html">Live code ↗</a>
       </h3>
 
-      <h3>Basic Shapes</h3>
+      <h2>Adding Shapes</h2>
+
+      <h3>Basic (JS)</h3>
+      <demo-snippet>
+        <template>
+          <fabric-canvas></fabric-canvas>
+          <script>
+            window.addEventListener('WebComponentsReady', () => {
+              // To use the fabric.js API to create shapes, use util and helpers etc.
+              // you must first import the fabric module like so:
+              // import { fabric } from 'fabric-canvas';
+
+              const fc = document.querySelector('fabric-canvas');
+
+              const rect = new fabric.Rect({
+                top: 100,
+                left: 100,
+                width: 200,
+                height: 200,
+                fill: 'red'
+              });
+
+              fc.canvas.add(rect);
+            });
+          </script>
+        </template>
+      </demo-snippet>
+
+      <h3>Basic (HTML)</h3>
       <demo-snippet>
         <template>
           <fabric-canvas>
-            <fabric-rect top="100" left="100" width="50" height="50" fill="red"></fabric-rect>
-            <fabric-ellipse top="100" left="300" rx="100" ry="100" fill="blue"></fabric-ellipse>
+            <fabric-rect top="100" left="100" width="200" height="200" fill="red"></fabric-rect>
           </fabric-canvas>
         </template>
       </demo-snippet>
 
-      <h3>Paths</h3>
+      <h3>Advanced (HTML)</h3>
       <demo-snippet>
         <template>
           <fabric-canvas opt-viewport-transform="[4,0,0,4,100,120]">
@@ -60,6 +91,17 @@
               fill="#ccc"
             ></fabric-path>
           </fabric-canvas>
+        </template>
+      </demo-snippet>
+
+      <h2>Static Canvas</h2>
+
+      <h3>Basic</h3>
+      <demo-snippet>
+        <template>
+          <fabric-static-canvas>
+            <fabric-ellipse top="100" left="100" rx="100" ry="100" fill="blue"></fabric-ellipse>
+          </fabric-static-canvas>
         </template>
       </demo-snippet>
     </main>
