@@ -129,8 +129,16 @@ export const FabricCanvasMixin = superClass =>
     _getShapeOptions(node) {
       const options = {};
       Array.from(node.attributes).forEach(attr => {
-        options[attr.name] = this._parseAttrValue(attr.value);
+        const optName = attr.name
+          .split('-')
+          .map((c, i) => (i === 0 ? c : c[0].toUpperCase() + c.substring(1)))
+          .join('');
+        options[optName] = this._parseAttrValue(attr.value);
       });
+      if (node.tagName.includes('TEXT')) {
+        options.text = node.innerText;
+        node.innerText = '';
+      }
       return options;
     }
 
@@ -138,6 +146,8 @@ export const FabricCanvasMixin = superClass =>
       let fabricShape;
       if (shapeClass === 'Path' && options.path) {
         fabricShape = new fabric[shapeClass](options.path, options);
+      } else if (shapeClass.includes('Text') && options.text) {
+        fabricShape = new fabric[shapeClass](options.text, options);
       } else {
         fabricShape = new fabric[shapeClass](options);
       }
