@@ -6,7 +6,7 @@ import fabric from './lib/fabric.esm';
  * @mixinFunction
  */
 export const FabricCanvasMixin = superClass =>
-  class CanvasMixin extends superClass {
+  class FCanvasMixin extends superClass {
     static get template() {
       return html`
         <style>
@@ -30,22 +30,26 @@ export const FabricCanvasMixin = superClass =>
       };
     }
 
-    constructor(isStatic = false) {
+    static get observers() {
+      return ['setDimensions(width, height)'];
+    }
+
+    constructor(isStatic = true) {
       super();
-      this._surfaceClass = isStatic ? 'StaticCanvas' : 'Canvas';
+      this._canvasClass = isStatic ? 'StaticCanvas' : 'Canvas';
     }
 
     ready() {
       super.ready();
       this.fabric = fabric;
-      this.canvas = new fabric[this._surfaceClass](this.$.canvas, this._getCanvasOptions());
+      this.canvas = new fabric[this._canvasClass](this.$.canvas, this._getCanvasOptions());
       this.setDimensions();
       this.addEventListener('iron-resize', this._onResize);
       this.$.slot.addEventListener('slotchange', this._onSlotChange.bind(this));
     }
 
-    static get observers() {
-      return ['setDimensions(width, height)'];
+    get _counter() {
+      return this.__counter === undefined ? (this.__counter = 0) : ++this.___counter;
     }
 
     setDimensions(width, height) {
@@ -75,6 +79,12 @@ export const FabricCanvasMixin = superClass =>
       this.canvas.setHeight(this._height);
     }
 
+    _onFabricCanvasUpdate(e) {
+      const { id, prop, value } = e.detail;
+      this.canvas.getObjects().filter(obj => obj.id === id)[0][prop] = value;
+      this.canvas.renderAll();
+    }
+
     _onResize() {
       if (this._resizeId) clearTimeout(this._resizeId);
       this._resizeId = setTimeout(() => {
@@ -92,6 +102,9 @@ export const FabricCanvasMixin = superClass =>
             const options = this._getShapeOptions(node);
             const fabricShape = this._getFabricShape(shapeClass, options);
             this.canvas.add(fabricShape);
+            node.id = options.id;
+            node.fabric = this._proxyProperties(options, node);
+            node.addEventListener('fabric-canvas-update', e => this._onFabricCanvasUpdate(e));
           }
         }
       });
@@ -127,7 +140,7 @@ export const FabricCanvasMixin = superClass =>
     }
 
     _getShapeOptions(node) {
-      const options = {};
+      const options = { id: this._counter };
       Array.from(node.attributes).forEach(attr => {
         const optName = attr.name
           .split('-')
@@ -152,5 +165,21 @@ export const FabricCanvasMixin = superClass =>
         fabricShape = new fabric[shapeClass](options);
       }
       return fabricShape;
+    }
+
+    _proxyProperties(obj, node) {
+      return new Proxy(obj, {
+        set: function(target, prop, value) {
+          const event = new CustomEvent('fabric-canvas-update', {
+            detail: {
+              id: target.id,
+              prop,
+              value
+            }
+          });
+          node.dispatchEvent(event);
+          return Reflect.set(target, prop, value);
+        }
+      });
     }
   };

@@ -5,13 +5,15 @@ import { FabricCanvasMixin } from './fabric-canvas-mixin';
 import fabric from './lib/fabric.esm';
 
 /**
- * `<fabric-canvas>` Web Component wrapper of fabric.js
+ * `<fabric-canvas>`
+ * Web Component wrapper of [fabric.Canvas](http://fabricjs.com/docs/fabric.Canvas.html)
  *
  * ```html
  * <fabric-canvas></fabric-canvas>
  * ```
  *
  * @demo demo/index.html
+ * @polymer
  * @polymerBehavior IronResizableBehavior
  * @appliesMixin FabricCanvasMixin
  */
@@ -22,11 +24,19 @@ class FabricCanvas extends FabricCanvasMixin(mixinBehaviors([IronResizableBehavi
 
   static get properties() {
     return {
-      canvas: fabric.Canvas
+      /**
+       * Main rendering surface.
+       * @type {fabric.Canvas}
+       */
+      canvas: Object
     };
+  }
+
+  constructor() {
+    super(false);
   }
 }
 
 customElements.define(FabricCanvas.is, FabricCanvas);
 
-export { fabric };
+export { fabric, FabricCanvas };

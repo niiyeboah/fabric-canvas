@@ -1,9 +1,9 @@
-# &lt;fabric-canvas&gt;
+# `<fabric-canvas>`
 
 [![npm version](https://badgen.net/npm/v/fabric-canvas?color=00B4F0)](https://www.npmjs.com/package/fabric-canvas)
 
 <!--
-[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/vaadin-component-factoryfabric-canvas)
+[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/fabric-canvas)
 -->
 
 `<fabric-canvas>` is a Web Component wrapper for the popular javascript library [fabric.js](https://github.com/fabricjs/fabric.js).
@@ -87,6 +87,6 @@ fc.canvas.add(rect);
 
 1. Run `npm start` to open the demo.
 
-## License
+## [License](LICENSE)
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License.
