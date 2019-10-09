@@ -2,105 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
-    <title>fabric-canvas demo</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1" />
+    <title>&lt;fabric-canvas&gt;</title>
     <script dev src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script dev type="module" src="demo.js"></script>
     <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-        .centered {
-          max-width: 1000px;
+      <style is="custom-style" include="vaadin-component-demo-shared-styles">
+        fabric-canvas,
+        fabric-static-canvas {
+          height: 400px;
+        }
+        body {
+          margin: 0;
         }
         main {
-          opacity: 1;
           transition: opacity 0.5s;
         }
         main.hidden {
           opacity: 0;
         }
-        fabric-canvas,
-        fabric-static-canvas {
-          height: 400px;
+        html {
+          --lumo-primary-color: #009688;
         }
       </style>
     </custom-style>
-    <script>
-      window.addEventListener('WebComponentsReady', () => document.querySelector('main').classList.remove('hidden'));
-    </script>
   </head>
   <body>
-    <main class="vertical-section-container centered hidden">
-      <h3>
-        <a href="api/#/elements/FabricCanvas">API documentation ↗</a>
-        &nbsp;|&nbsp;
-        <a href="https://stackblitz.com/edit/fabric-canvas?file=index.html">Live code ↗</a>
-      </h3>
-
-      <h2>Adding Shapes</h2>
-
-      <h3>Basic (JS)</h3>
-      <demo-snippet>
-        <template>
-          <fabric-canvas></fabric-canvas>
-          <script>
-            window.addEventListener('WebComponentsReady', () => {
-              // To use the fabric.js API to create shapes, use util and helpers etc.
-              // you must first import the fabric module like so:
-              // import { fabric } from 'fabric-canvas';
-
-              const fc = document.querySelector('fabric-canvas');
-
-              const rect = new fabric.Rect({
-                top: 100,
-                left: 100,
-                width: 200,
-                height: 200,
-                fill: 'red'
-              });
-
-              fc.canvas.add(rect);
-            });
-          </script>
-        </template>
-      </demo-snippet>
-
-      <h3>Basic (HTML)</h3>
-      <demo-snippet>
-        <template>
-          <fabric-canvas>
-            <fabric-rect top="100" left="100" width="200" height="200" fill="green"></fabric-rect>
-          </fabric-canvas>
-        </template>
-      </demo-snippet>
-
-      <h3>Advanced (HTML)</h3>
-      <demo-snippet>
-        <template>
-          <fabric-canvas opt-viewport-transform="[1,0,0,1,220,0]">
-            <fabric-path path="M 100 350 l 150 -300" stroke="red" stroke-width="5" fill=""></fabric-path>
-            <fabric-path path="M 250 50 l 150 300" stroke="red" stroke-width="5" fill=""></fabric-path>
-            <fabric-path path="M 175 200 l 150 0" stroke="green" stroke-width="5" fill=""></fabric-path>
-            <fabric-path path="M 100 350 q 150 -300 300 0" stroke="blue" stroke-width="5" fill=""></fabric-path>
-            <fabric-circle left="95" top="345" radius="5"></fabric-circle>
-            <fabric-circle left="245" top="45" radius="5" /></fabric-circle>
-            <fabric-circle left="395" top="345" radius="5"></fabric-circle>
-            <fabric-text font-family="sans-serif" font-size="30" fill="black" left="70" top="330">A</fabric-text>
-            <fabric-text font-family="sans-serif" font-size="30" fill="black" left="240" top="10">B</fabric-text>
-            <fabric-text font-family="sans-serif" font-size="30" fill="black" left="410" top="330">C</fabric-text>
-          </fabric-canvas>
-        </template>
-      </demo-snippet>
-
-      <h2>Static Canvas</h2>
-
-      <h3>Basic</h3>
-      <demo-snippet>
-        <template>
-          <fabric-static-canvas>
-            <fabric-ellipse top="100" left="100" rx="100" ry="100" fill="blue"></fabric-ellipse>
-          </fabric-static-canvas>
-        </template>
-      </demo-snippet>
+    <main class="hidden">
+      <vaadin-component-demo config-src="demos.json"></vaadin-component-demo>
+      <demo-links
+        api-url="/api/#/elements/FabricCanvas"
+        code-url="https://stackblitz.com/edit/fabric-canvas?file=index.html"
+      >
+      </demo-links>
     </main>
   </body>
 </html>

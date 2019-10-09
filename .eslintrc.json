@@ -13,5 +13,9 @@
   },
   "rules": {
     "max-len": ["error", { "code": 120 }]
+  },
+  "globals": {
+    "DemoReadyEventEmitter": false,
+    "FabricCanvasDemo": false
   }
 }

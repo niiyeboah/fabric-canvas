@@ -12,6 +12,7 @@ export const FabricCanvasMixin = superClass =>
         <style>
           :host {
             display: block;
+            height: 400px;
           }
         </style>
         <slot id="slot"></slot>
@@ -53,30 +54,26 @@ export const FabricCanvasMixin = superClass =>
     }
 
     setDimensions(width, height) {
-      const boundingRect = this.parentElement.getBoundingClientRect();
-
       if (width) {
-        this._width = width || 400;
-      } else {
-        this._width = boundingRect.width;
-        if (this.assignedSlot && this.assignedSlot.parentElement) {
-          this._width = Number.parseInt(getComputedStyle(this.assignedSlot.parentElement).width);
-        }
+        this._width = width;
+      } else if (this.parentElement) {
+        this._width = this.parentElement.getBoundingClientRect().width;
+      } else if (this.assignedSlot && this.assignedSlot.parentElement) {
+        this._width = Number.parseInt(getComputedStyle(this.assignedSlot.parentElement).width);
       }
 
       if (height) {
-        this._height = height || 400;
-      } else {
-        this._height = boundingRect.height;
-        if (this.assignedSlot && this.assignedSlot.parentElement) {
-          this._height = Number.parseInt(getComputedStyle(this.assignedSlot.parentElement).height);
-        }
+        this._height = height;
+      } else if (this.parentElement) {
+        this._height = this.parentElement.getBoundingClientRect().height;
+      } else if (this.assignedSlot && this.assignedSlot.parentElement) {
+        this._height = Number.parseInt(getComputedStyle(this.assignedSlot.parentElement).height);
       }
 
-      this.style.width = `${this._width}px`;
-      this.style.height = `${this._height}px`;
-      this.canvas.setWidth(this._width);
-      this.canvas.setHeight(this._height);
+      this.style.width = this._width ? `${this._width}px` : 'auto';
+      this.style.height = `${this._height || 400}px`;
+      this.canvas.setWidth(this._width || this.getBoundingClientRect().width);
+      this.canvas.setHeight(this._height || this.getBoundingClientRect().width);
     }
 
     _onFabricCanvasUpdate(e) {

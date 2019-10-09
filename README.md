@@ -1,9 +1,9 @@
 # `<fabric-canvas>`
 
-[![npm version](https://badgen.net/npm/v/fabric-canvas?color=00B4F0)](https://www.npmjs.com/package/fabric-canvas)
+[![npm version](https://badgen.net/npm/v/fabric-canvas?color=009688)](https://www.npmjs.com/package/fabric-canvas)
 
 <!--
-[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/fabric-canvas)
+[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-009688.svg)](https://vaadin.com/directory/component/vaadin-component-factoryfabric-canvas)
 -->
 
 `<fabric-canvas>` is a Web Component wrapper for the popular javascript library [fabric.js](https://github.com/fabricjs/fabric.js).
