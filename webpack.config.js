@@ -34,10 +34,10 @@ const assets = [
     from: resolve('./demo/demos.json'),
     to: OUTPUT_PATH
   },
-  // {
-  //   from: resolve('./demo/components/demo-links.js'),
-  //   to: join(OUTPUT_PATH, 'components')
-  // },
+  {
+    from: resolve('./demo/_redirects'),
+    to: OUTPUT_PATH
+  },
   {
     from: resolve('./demo/components/fabric-canvas-adding-shapes-demos.js'),
     to: join(OUTPUT_PATH, 'components')
@@ -46,14 +46,6 @@ const assets = [
     from: resolve('./demo/components/fabric-canvas-static-canvas-demos.js'),
     to: join(OUTPUT_PATH, 'components')
   }
-  // {
-  //   from: resolve('./demo/components/vaadin-demo-shadow-dom-renderer.js'),
-  //   to: join(OUTPUT_PATH, 'components')
-  // },
-  // {
-  //   from: resolve('./demo/components/vaadin-demo-snippet.js'),
-  //   to: join(OUTPUT_PATH, 'components')
-  // }
 ];
 
 const commonConfig = merge([
