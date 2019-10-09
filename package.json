@@ -1,6 +1,6 @@
 {
   "name": "fabric-canvas",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Web Component wrapper of fabric.js",
   "main": "src/fabric-canvas.js",
   "author": "Nii Yeboah",
