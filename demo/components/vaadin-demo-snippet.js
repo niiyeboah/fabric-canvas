@@ -8,27 +8,31 @@ import './vaadin-demo-shadow-dom-renderer.js';
 import '@vaadin/vaadin-demo-helpers/vaadin-demo-iframe-renderer';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import '@vaadin/vaadin-demo-helpers/vaadin-demo-ready-event-emitter';
+
 const documentContainer = document.createElement('template');
 
 documentContainer.innerHTML = `<dom-module id="vaadin-demo-snippet-default-theme">
   <template>
     <style>
-    /**
-     * GHColors theme by Avi Aryan (http://aviaryan.in)
-     * Inspired by Github syntax coloring
-     */
+      /**
+       * atom-dark theme for prism.js
+       * Based on Atom's atom-dark theme: https://github.com/atom/atom-dark-syntax
+       * @author Joe Gibson (@gibsjose)
+       */
 
-    code[class*="lang-"],
-    pre[class*="lang-"] {
-        color: #393A34;
-        font-family: "Source Code Pro", "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+      code[class*="language-"],
+      pre[class*="language-"],
+      code[class*="lang-"],
+      pre[class*="lang-"] {
+        color: #c5c8c6;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+        font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
         direction: ltr;
         text-align: left;
         white-space: pre;
         word-spacing: normal;
         word-break: normal;
-        font-size: 0.875em;
-        line-height: 1.4;
+        line-height: 1.5;
 
         -moz-tab-size: 4;
         -o-tab-size: 4;
@@ -38,103 +42,131 @@ documentContainer.innerHTML = `<dom-module id="vaadin-demo-snippet-default-theme
         -moz-hyphens: none;
         -ms-hyphens: none;
         hyphens: none;
-    }
+      }
 
-    pre[class*="lang-"]::-moz-selection,
-    pre[class*="lang-"] ::-moz-selection,
-    code[class*="lang-"]::-moz-selection,
-    code[class*="lang-"] ::-moz-selection {
-        background: #b3d4fc;
-    }
-
-    pre[class*="lang-"]::selection,
-    pre[class*="lang-"] ::selection,
-    code[class*="lang-"]::selection,
-    code[class*="lang-"] ::selection {
-        background: #b3d4fc;
-    }
-
-    /* Code blocks */
-    pre[class*="lang-"] {
+      /* Code blocks */
+      pre[class*="language-"],
+      pre[class*="lang-"] {
         padding: 1em;
         margin: .5em 0;
         overflow: auto;
-        border: 1px solid #ddd;
-        background-color: white;
-    }
+        border-radius: 0.3em;
+      }
 
-    /* Inline code */
-    :not(pre) > code[class*="lang-"] {
-        padding: .2em;
-        padding-top: 1px;
-        padding-bottom: 1px;
-        background: #f8f8f8;
-        border: 1px solid #ddd;
-    }
+      :not(pre) > code[class*="language-"],
+      pre[class*="language-"],
+      :not(pre) > code[class*="lang-"],
+      pre[class*="lang-"]  {
+        background: #1d1f21;
+      }
 
-    .token.comment,
-    .token.prolog,
-    .token.doctype,
-    .token.cdata {
-        color: #998;
-        font-style: italic;
-    }
+      /* Inline code */
+      :not(pre) > code[class*="language-"],
+      :not(pre) > code[class*="lang-"] {
+        padding: .1em;
+        border-radius: .3em;
+      }
 
-    .token.namespace {
+      .token.comment,
+      .token.prolog,
+      .token.doctype,
+      .token.cdata {
+        color: #7C7C7C;
+      }
+
+      .token.punctuation {
+        color: #c5c8c6;
+      }
+
+      .namespace {
         opacity: .7;
-    }
+      }
 
-    .token.string,
-    .token.attr-value {
-        color: #e3116c;
-    }
+      .token.property,
+      .token.keyword,
+      .token.tag {
+        color: #96CBFE;
+      }
 
-    .token.punctuation,
-    .token.operator {
-        color: #393A34; /* no highlight */
-    }
+      .token.class-name {
+        color: #FFFFB6;
+        text-decoration: underline;
+      }
 
-    .token.entity,
-    .token.url,
-    .token.symbol,
-    .token.number,
-    .token.boolean,
-    .token.variable,
-    .token.constant,
-    .token.property,
-    .token.regex,
-    .token.inserted {
-        color: #36acaa;
-    }
+      .token.boolean,
+      .token.constant {
+        color: #99CC99;
+      }
 
-    .token.atrule,
-    .token.keyword,
-    .token.attr-name,
-    .lang-autohotkey .token.selector {
-        color: #00a4db;
-    }
+      .token.symbol,
+      .token.deleted {
+        color: #f92672;
+      }
 
-    .token.function,
-    .token.deleted,
-    .lang-autohotkey .token.tag {
-        color: #9a050f;
-    }
+      .token.number {
+        color: #FF73FD;
+      }
 
-    .token.tag,
-    .token.selector,
-    .lang-autohotkey .token.keyword {
-        color: #00009f;
-    }
+      .token.selector,
+      .token.attr-name,
+      .token.string,
+      .token.char,
+      .token.builtin,
+      .token.inserted {
+        color: #A8FF60;
+      }
 
-    .token.important,
-    .token.function,
-    .token.bold {
+      .token.variable {
+        color: #C6C5FE;
+      }
+
+      .token.operator {
+        color: #EDEDED;
+      }
+
+      .token.entity {
+        color: #FFFFB6;
+        /* text-decoration: underline; */
+      }
+
+      .token.url {
+        color: #96CBFE;
+      }
+
+      .language-css .token.string,
+      .lang-css .token.string,
+      .style .token.string {
+        color: #87C38A;
+      }
+
+      .token.atrule,
+      .token.attr-value {
+        color: #F9EE98;
+      }
+
+      .token.function {
+        color: #DAD085;
+      }
+
+      .token.regex {
+        color: #E9C062;
+      }
+
+      .token.important {
+        color: #fd971f;
+      }
+
+      .token.important,
+      .token.bold {
         font-weight: bold;
-    }
-
-    .token.italic {
+      }
+      .token.italic {
         font-style: italic;
-    }
+      }
+
+      .token.entity {
+        cursor: help;
+      }
     </style>
   </template>
 </dom-module>`;
@@ -162,8 +194,8 @@ class VaadinDemoSnippet extends ThemableMixin(GestureEventListeners(PolymerEleme
 
         .code-container {
           margin: 0;
-          background-color: rgba(0, 0, 0, 0.02);
-          font-size: 0.95em;
+          background-color: #282a36;
+          font-size: 0.85em;
           overflow: auto;
           position: relative;
           padding: 0;

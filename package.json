@@ -74,7 +74,6 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-vaadin": "^0.2.7",
     "eslint-plugin-html": "^6.0.0",
-    "firacode": "^2.0.0",
     "html-replace-webpack-plugin": "^2.5.5",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-tags-plugin": "^2.0.15",
