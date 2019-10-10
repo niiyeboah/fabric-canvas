@@ -73,7 +73,7 @@ export const FabricCanvasMixin = superClass =>
       this.style.width = this._width ? `${this._width}px` : 'auto';
       this.style.height = `${this._height || 400}px`;
       this.canvas.setWidth(this._width || this.getBoundingClientRect().width);
-      this.canvas.setHeight(this._height || this.getBoundingClientRect().width);
+      this.canvas.setHeight(this._height || this.getBoundingClientRect().height);
     }
 
     _onFabricCanvasUpdate(e) {
