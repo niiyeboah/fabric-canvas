@@ -50,7 +50,7 @@ export const FabricCanvasMixin = superClass =>
     }
 
     get _counter() {
-      return this.__counter === undefined ? (this.__counter = 0) : ++this.___counter;
+      return this.__counter === undefined ? (this.__counter = 0) : ++this.__counter;
     }
 
     setDimensions(width, height) {

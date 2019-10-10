@@ -35,10 +35,6 @@ const assets = [
     to: OUTPUT_PATH
   },
   {
-    from: resolve('./demo/_redirects'),
-    to: OUTPUT_PATH
-  },
-  {
     from: resolve('./demo/components/fabric-canvas-adding-shapes-demos.js'),
     to: join(OUTPUT_PATH, 'components')
   },
