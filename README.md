@@ -60,10 +60,6 @@ Add the `<fabric-canvas>` element to the page.
 ### `JS` API
 
 ```js
-import { fabric } from 'fabric-canvas';
-
-const fc = document.querySelector('fabric-canvas');
-
 const rect = new fabric.Rect({
   top: 100,
   left: 100,
@@ -72,10 +68,14 @@ const rect = new fabric.Rect({
   fill: 'red'
 });
 
-fc.canvas.add(rect);
+document.querySelector('fabric-canvas').canvas.add(rect);
 ```
 
-> **Note:** In order to use the [fabric.js API](http://fabricjs.com/docs/fabric.Canvas.html#add) to add shapes, you must import the `fabric` module along with the web component.
+In order to use the [fabric.js API](http://fabricjs.com/docs/fabric.Canvas.html#add) to create shapes, you must import the `fabric` module along with the web component:
+
+```js
+import { fabric } from 'fabric-canvas';
+```
 
 ## Running demo
 
