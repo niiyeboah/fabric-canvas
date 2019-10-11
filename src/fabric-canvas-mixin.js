@@ -78,7 +78,10 @@ export const FabricCanvasMixin = superClass =>
 
     _onFabricCanvasUpdate(e) {
       const { id, prop, value } = e.detail;
-      this.canvas.getObjects().filter(obj => obj.id === id)[0][prop] = value;
+      this.canvas
+        .getObjects()
+        .filter(obj => obj.id === id)[0]
+        .set(prop, value);
       this.canvas.renderAll();
     }
 
