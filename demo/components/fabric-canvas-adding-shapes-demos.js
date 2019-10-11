@@ -26,12 +26,6 @@ class FabricCanvasAddingShapesDemos extends DemoReadyEventEmitter(FabricCanvasDe
           <fabric-canvas></fabric-canvas>
           <script>
             window.addDemoReadyListener('#fabric-canvas-adding-shapes-demos-basic-js', function(document) {
-              // To use the fabric.js API to create shapes, use util and helpers etc.
-              // you must first import the fabric module like so:
-              // import { fabric } from 'fabric-canvas';
-
-              const fc = document.querySelector('fabric-canvas');
-
               const rect = new fabric.Rect({
                 top: 100,
                 left: 100,
@@ -40,7 +34,7 @@ class FabricCanvasAddingShapesDemos extends DemoReadyEventEmitter(FabricCanvasDe
                 fill: 'red'
               });
 
-              fc.canvas.add(rect);
+              document.querySelector('fabric-canvas').add(rect);
             });
           </script>
         </template>

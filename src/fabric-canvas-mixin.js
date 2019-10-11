@@ -42,7 +42,6 @@ export const FabricCanvasMixin = superClass =>
 
     ready() {
       super.ready();
-      this.fabric = fabric;
       this.canvas = new fabric[this._canvasClass](this.$.canvas, this._getCanvasOptions());
       this.setDimensions();
       this.addEventListener('iron-resize', this._onResize);
@@ -51,6 +50,15 @@ export const FabricCanvasMixin = superClass =>
 
     get _counter() {
       return this.__counter === undefined ? (this.__counter = 0) : ++this.__counter;
+    }
+
+    get objects() {
+      return this.canvas.getObjects();
+    }
+
+    add(...args) {
+      this.canvas.add(...args);
+      return this;
     }
 
     setDimensions(width, height) {
@@ -78,10 +86,7 @@ export const FabricCanvasMixin = superClass =>
 
     _onFabricCanvasUpdate(e) {
       const { id, prop, value } = e.detail;
-      this.canvas
-        .getObjects()
-        .filter(obj => obj.id === id)[0]
-        .set(prop, value);
+      this.objects.filter(obj => obj.id === id)[0].set(prop, value);
       this.canvas.renderAll();
     }
 
@@ -99,9 +104,9 @@ export const FabricCanvasMixin = superClass =>
           const shapeName = node.tagName.replace('FABRIC-', '').toLowerCase();
           const shapeClass = shapeName[0].toUpperCase() + shapeName.substring(1);
           if (fabric[shapeClass]) {
-            const options = this._getShapeOptions(node);
+            const options = this._getObjectOptions(node);
             const fabricShape = this._getFabricShape(shapeClass, options);
-            this.canvas.add(fabricShape);
+            this.add(fabricShape);
             node.id = options.id;
             node.fabric = this._proxyProperties(options, node);
             node.addEventListener('fabric-canvas-update', e => this._onFabricCanvasUpdate(e));
@@ -139,7 +144,7 @@ export const FabricCanvasMixin = superClass =>
       return options;
     }
 
-    _getShapeOptions(node) {
+    _getObjectOptions(node) {
       const options = { id: this._counter };
       Array.from(node.attributes).forEach(attr => {
         const optName = attr.name

@@ -68,7 +68,7 @@ const rect = new fabric.Rect({
   fill: 'red'
 });
 
-document.querySelector('fabric-canvas').canvas.add(rect);
+document.querySelector('fabric-canvas').add(rect);
 ```
 
 In order to use the [fabric.js API](http://fabricjs.com/docs/fabric.Canvas.html#add) to create shapes, you must import the `fabric` module along with the web component:
