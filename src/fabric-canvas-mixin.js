@@ -21,7 +21,7 @@ export const FabricCanvasMixin = superClass =>
     }
 
     static get version() {
-      return '0.3.1';
+      return '0.3.2';
     }
 
     static get properties() {
