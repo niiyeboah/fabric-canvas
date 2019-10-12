@@ -3,7 +3,7 @@
 [![npm version](https://badgen.net/npm/v/fabric-canvas?color=009688)](https://www.npmjs.com/package/fabric-canvas)
 
 <!--
-[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-009688.svg)](https://vaadin.com/directory/component/vaadin-component-factoryfabric-canvas)
+[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-009688.svg)](https://vaadin.com/directory/component/fabric-canvas)
 -->
 
 `<fabric-canvas>` is a Web Component wrapper for the popular javascript library [fabric.js](https://github.com/fabricjs/fabric.js).
@@ -41,21 +41,19 @@ Or import the static version:
 import 'fabric-canvas/src/fabric-static-canvas';
 ```
 
-Add the `<fabric-canvas>` element to the page.
+In order to use the [fabric](http://fabricjs.com/docs/) API to create shapes, you must import the `fabric` module along with the web component:
+
+```js
+import { fabric } from 'fabric-canvas';
+```
+
+Add the `<fabric-canvas>` element to the page:
 
 ```html
 <fabric-canvas></fabric-canvas>
 ```
 
 ## Adding Shapes
-
-### `HTML` API
-
-```html
-<fabric-canvas>
-  <fabric-rect top="100" left="100" width="200" height="200" fill="red"></fabric-rect>
-</fabric-canvas>
-```
 
 ### `JS` API
 
@@ -71,10 +69,12 @@ const rect = new fabric.Rect({
 document.querySelector('fabric-canvas').add(rect);
 ```
 
-In order to use the [fabric.js API](http://fabricjs.com/docs/fabric.Canvas.html#add) to create shapes, you must import the `fabric` module along with the web component:
+### `HTML` API
 
-```js
-import { fabric } from 'fabric-canvas';
+```html
+<fabric-canvas>
+  <fabric-rect top="100" left="100" width="200" height="200" fill="red"></fabric-rect>
+</fabric-canvas>
 ```
 
 ## Running demo

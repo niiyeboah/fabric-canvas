@@ -143,10 +143,7 @@ export const FabricCanvasMixin = superClass =>
     _getObjectOptions(node) {
       const options = { id: this._counter };
       Array.from(node.attributes).forEach(attr => {
-        const optionName = attr.name
-          .split('-')
-          .map((c, i) => (i === 0 ? c : c[0].toUpperCase() + c.substring(1)))
-          .join('');
+        const optionName = this._camelCase(attr.name);
         options[optionName] = this._parseAttrValue(attr.value);
       });
       if (node.tagName.includes('TEXT')) {
