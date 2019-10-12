@@ -35,11 +35,11 @@ const assets = [
     to: OUTPUT_PATH
   },
   {
-    from: resolve('./demo/components/fabric-canvas-adding-shapes-demos.js'),
+    from: resolve('./demo/components/fabric-canvas-demos.js'),
     to: join(OUTPUT_PATH, 'components')
   },
   {
-    from: resolve('./demo/components/fabric-canvas-static-canvas-demos.js'),
+    from: resolve('./demo/components/fabric-static-canvas-demos.js'),
     to: join(OUTPUT_PATH, 'components')
   }
 ];
