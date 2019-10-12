@@ -4,6 +4,7 @@ const { readFileSync, writeFileSync } = require('fs');
 const fabricPath = path.resolve(__dirname, '../node_modules/fabric/dist/', 'fabric.js');
 const outputPath = path.resolve(__dirname, '../src/lib/', 'fabric.esm.js');
 let fabricString = readFileSync(fabricPath, 'utf8');
+
 [
   /if \(typeof exports.*(if \(document.*?window;).*DOMParser;\n}/s,
   /\(function\(global\)/g,

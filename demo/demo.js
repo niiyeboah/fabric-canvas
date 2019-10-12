@@ -4,8 +4,8 @@ import './fabric-canvas-demo';
 import '@vaadin/vaadin-demo-helpers/vaadin-component-demo';
 import './components/demo-links';
 
-import './components/fabric-canvas-adding-shapes-demos';
-import './components/fabric-canvas-static-canvas-demos';
+import './components/fabric-canvas-demos';
+import './components/fabric-static-canvas-demos';
 
 import '../src/fabric-static-canvas';
 import { fabric } from '../src/fabric-canvas';

@@ -73,6 +73,7 @@ class DemoLinks extends PolymerElement {
           }
         }
       </style>
+
       <div class="links-container">
         <a href="[[apiUrl]]">
           <vaadin-button id="api" title="API documentation ↗">
@@ -87,14 +88,6 @@ class DemoLinks extends PolymerElement {
         </a>
       </div>
     `;
-  }
-
-  ready() {
-    super.ready();
-    this.$.api.addEventListener('click', () => {
-      window.location.reload();
-      window.location.href = this.apiUrl;
-    });
   }
 }
 

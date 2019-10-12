@@ -1,25 +1,15 @@
 {
-  "name": "<fabric-canvas>",
+  "name": "fabric-canvas",
   "pages": [
     {
-      "name": "Adding Shapes",
-      "url": "fabric-canvas-adding-shapes-demos",
-      "src": "components/fabric-canvas-adding-shapes-demos.js",
-      "meta": {
-        "title": "<fabric-canvas> | Adding Shapes Examples",
-        "description": "",
-        "image": ""
-      }
+      "name": "Canvas",
+      "url": "fabric-canvas-demos",
+      "src": "components/fabric-canvas-demos.js"
     },
     {
       "name": "Static Canvas",
-      "url": "fabric-canvas-static-canvas-demos",
-      "src": "components/fabric-canvas-static-canvas-demos.js",
-      "meta": {
-        "title": "<fabric-canvas> | Static Canvas Examples",
-        "description": "",
-        "image": ""
-      }
+      "url": "fabric-static-canvas-demos",
+      "src": "components/fabric-static-canvas-demos.js"
     }
   ]
 }

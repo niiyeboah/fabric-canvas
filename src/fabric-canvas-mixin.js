@@ -101,12 +101,12 @@ export const FabricCanvasMixin = superClass =>
     _onSlotChange() {
       this.$.slot.assignedNodes().forEach(node => {
         if (node.nodeType !== 3 && node.tagName.match(/^FABRIC-.*/)) {
-          const shapeName = node.tagName.replace('FABRIC-', '').toLowerCase();
-          const shapeClass = shapeName[0].toUpperCase() + shapeName.substring(1);
-          if (fabric[shapeClass]) {
+          const objectName = node.tagName.replace('FABRIC-', '').toLowerCase();
+          const objectClass = this._camelCase(objectName, true);
+          if (fabric[objectClass]) {
             const options = this._getObjectOptions(node);
-            const fabricShape = this._getFabricShape(shapeClass, options);
-            this.add(fabricShape);
+            const fabricObject = this._getFabricObject(objectClass, options);
+            this.add(fabricObject);
             node.id = options.id;
             node.fabric = this._proxyProperties(options, node);
             node.addEventListener('fabric-canvas-update', e => this._onFabricCanvasUpdate(e));
@@ -134,12 +134,8 @@ export const FabricCanvasMixin = superClass =>
       Array.from(this.attributes)
         .filter(attr => !!attr.name.match(/^opt-.*/))
         .forEach(attr => {
-          const optName = attr.name
-            .replace('opt-', '')
-            .split('-')
-            .map((c, i) => (i === 0 ? c : c[0].toUpperCase() + c.substring(1)))
-            .join('');
-          options[optName] = this._parseAttrValue(attr.value);
+          const optionName = this._camelCase(attr.name.replace('opt-', ''));
+          options[optionName] = this._parseAttrValue(attr.value);
         });
       return options;
     }
@@ -147,11 +143,11 @@ export const FabricCanvasMixin = superClass =>
     _getObjectOptions(node) {
       const options = { id: this._counter };
       Array.from(node.attributes).forEach(attr => {
-        const optName = attr.name
+        const optionName = attr.name
           .split('-')
           .map((c, i) => (i === 0 ? c : c[0].toUpperCase() + c.substring(1)))
           .join('');
-        options[optName] = this._parseAttrValue(attr.value);
+        options[optionName] = this._parseAttrValue(attr.value);
       });
       if (node.tagName.includes('TEXT')) {
         options.text = node.innerText;
@@ -160,16 +156,16 @@ export const FabricCanvasMixin = superClass =>
       return options;
     }
 
-    _getFabricShape(shapeClass, options) {
-      let fabricShape;
-      if (shapeClass === 'Path' && options.path) {
-        fabricShape = new fabric[shapeClass](options.path, options);
-      } else if (shapeClass.includes('Text') && options.text) {
-        fabricShape = new fabric[shapeClass](options.text, options);
+    _getFabricObject(objectClass, options) {
+      let fabricObject;
+      if (objectClass === 'Path' && options.path) {
+        fabricObject = new fabric[objectClass](options.path, options);
+      } else if (objectClass.includes('Text') && options.text) {
+        fabricObject = new fabric[objectClass](options.text, options);
       } else {
-        fabricShape = new fabric[shapeClass](options);
+        fabricObject = new fabric[objectClass](options);
       }
-      return fabricShape;
+      return fabricObject;
     }
 
     _proxyProperties(obj, node) {
@@ -186,5 +182,12 @@ export const FabricCanvasMixin = superClass =>
           return Reflect.set(target, prop, value);
         }
       });
+    }
+
+    _camelCase(str, pascalCase = false) {
+      return str
+        .split('-')
+        .map((c, i) => (i === 0 && !pascalCase ? c : c[0].toUpperCase() + c.substring(1)))
+        .join('');
     }
   };
