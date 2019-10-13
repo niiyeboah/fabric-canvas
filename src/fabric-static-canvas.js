@@ -26,7 +26,7 @@ class FabricStaticCanvas extends FabricCanvasMixin(mixinBehaviors([IronResizable
     return {
       /**
        * Main rendering surface.
-       * @type {fabric.Canvas}
+       * @type {fabric.StaticCanvas}
        */
       canvas: Object
     };

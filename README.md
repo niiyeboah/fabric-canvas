@@ -16,8 +16,8 @@
 |
 [API documentation ↗](https://fabric-canvas.netlify.com/api/#/elements/FabricCanvas)
 
-![screenshot](https://user-images.githubusercontent.com/3392815/66313780-9bdf4400-e91b-11e9-96c8-096cd17d6b7a.png)
-![carbon](https://user-images.githubusercontent.com/3392815/66313774-98e45380-e91b-11e9-9659-605f432179fc.png)
+![rect](https://user-images.githubusercontent.com/3392815/66719537-ee2bd380-edf9-11e9-803d-d5e6cac2783d.png)
+![carbon](https://user-images.githubusercontent.com/3392815/66719531-d6544f80-edf9-11e9-9093-aab0f6c13663.png)
 
 ## Installation
 

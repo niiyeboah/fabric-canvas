@@ -14,6 +14,9 @@ export const FabricCanvasMixin = superClass =>
             display: block;
             height: 400px;
           }
+          slot::slotted(*) {
+            display: none;
+          }
         </style>
         <slot id="slot"></slot>
         <canvas id="canvas" part="canvas" width="[[width]]" height="[[height]]"></canvas>
@@ -21,7 +24,7 @@ export const FabricCanvasMixin = superClass =>
     }
 
     static get version() {
-      return '0.3.2';
+      return '0.3.3';
     }
 
     static get properties() {
@@ -37,6 +40,7 @@ export const FabricCanvasMixin = superClass =>
 
     constructor(isStatic = true) {
       super();
+      this._setObjectDefaults();
       this._canvasClass = isStatic ? 'StaticCanvas' : 'Canvas';
     }
 
@@ -148,7 +152,6 @@ export const FabricCanvasMixin = superClass =>
       });
       if (node.tagName.includes('TEXT')) {
         options.text = node.innerText;
-        node.innerText = '';
       }
       return options;
     }
@@ -186,5 +189,12 @@ export const FabricCanvasMixin = superClass =>
         .split('-')
         .map((c, i) => (i === 0 && !pascalCase ? c : c[0].toUpperCase() + c.substring(1)))
         .join('');
+    }
+
+    _setObjectDefaults() {
+      fabric.Object.prototype.set({
+        transparentCorners: false,
+        cornerStyle: 'circle'
+      });
     }
   };
