@@ -55,7 +55,7 @@ Add the `<fabric-canvas>` element to the page:
 
 ## Adding Shapes
 
-### `JS` API
+### _JS_ API
 
 ```js
 const rect = new fabric.Rect({
@@ -69,7 +69,7 @@ const rect = new fabric.Rect({
 document.querySelector('fabric-canvas').add(rect);
 ```
 
-### `HTML` API
+### _HTML_ API
 
 ```html
 <fabric-canvas>
