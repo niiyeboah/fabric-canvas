@@ -70,7 +70,7 @@
     "colors": "^1.3.3",
     "compression-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
-    "eslint": "^5.16.0",
+    "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-vaadin": "^0.2.7",
     "eslint-plugin-html": "^6.0.0",
